@@ -53,6 +53,8 @@
      <Compile Include="Assets\Scripts\GamePlay\Player.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Track.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Train.cs" />
+     <Compile Include="Assets\Scripts\Particles.cs" />
+     <Compile Include="Assets\Scripts\TestMain.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

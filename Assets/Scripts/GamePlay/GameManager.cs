@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TrainWreck.Menu;
 
 namespace TrainWreck.GamePlay
 {
