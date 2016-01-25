@@ -8,7 +8,7 @@ public class BezierCurveInspector : Editor {
     private Quaternion handleRotation;
 
     private const int lineSteps = 10;
-	// Use this for initialization
+
     private void OnSceneGUI() {
         curve = target as BezierCurve;
         handleTransform = curve.transform;
@@ -17,22 +17,26 @@ public class BezierCurveInspector : Editor {
         Vector3 p0 = ShowPoint(0);
         Vector3 p1 = ShowPoint(1);
         Vector3 p2 = ShowPoint(2);
+        Vector3 p3 = ShowPoint(3);
 
         Handles.color = Color.grey;
         Handles.DrawLine(p0, p1);
-        Handles.DrawLine(p1, p2);
+        Handles.DrawLine(p2, p3);
 
         Handles.color = Color.white;
         Vector3 lineStart = curve.GetPoint(0f);
-        for (int x = 0; x <= lineSteps; x++) {
-            Vector3 lineEnd = curve.GetPoint(x / (float)lineSteps);
+        Handles.color = Color.green;
+
+        for (int i = 0; i <= lineSteps; i++) {
+            Vector3 lineEnd = curve.GetPoint(i / (float)lineSteps);
+            Handles.color = Color.white;
             Handles.DrawLine(lineStart, lineEnd);
+            Handles.color = Color.green;
+            Handles.DrawLine(lineEnd, lineEnd + curve.GetDirection(i / (float)lineSteps));
             lineStart = lineEnd;
         }
     }
-    private Vector3 GetPoint(float t) {
-        return transform.TransformPoint(Bezier.GetPoint(curve.points[0]), curve.points[1], curve.points[2], t);
-    }
+    
     private Vector3 ShowPoint(int index) {
         Vector3 point = handleTransform.TransformPoint(curve.points[index]);
         EditorGUI.BeginChangeCheck();
