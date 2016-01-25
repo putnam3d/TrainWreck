@@ -58,6 +58,8 @@
      <Compile Include="Assets\TrackEditor\TrackEditor\Bezier.cs" />
      <Compile Include="Assets\TrackEditor\TrackEditor\BezierCurve.cs" />
      <Compile Include="Assets\TrackEditor\TrackEditor\BezierCurveInspector.cs" />
+     <Compile Include="Assets\TrackEditor\TrackEditor\BezierSpline.cs" />
+     <Compile Include="Assets\TrackEditor\TrackEditor\BezierSplineInspector.cs" />
      <Compile Include="Assets\TrackEditor\TrackEditor\Line.cs" />
      <Compile Include="Assets\TrackEditor\TrackEditor\LineInspector.cs" />
  <Reference Include="UnityEngine.UI">
