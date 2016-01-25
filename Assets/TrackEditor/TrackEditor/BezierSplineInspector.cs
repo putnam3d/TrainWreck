@@ -10,6 +10,7 @@ public class BezierSplineInspector : Editor {
         Color.yellow,
         Color.cyan                    
     };
+
     private BezierSpline spline;
     private Transform handleTransform;
     private Quaternion handleRotation;
@@ -65,8 +66,13 @@ public class BezierSplineInspector : Editor {
             spline.AddCurve();
             EditorUtility.SetDirty(spline);
         }
-    }
+        if (GUILayout.Button("Reset Curve")) {
+            Undo.RecordObject(spline, "Reset Curve");
+            spline.Reset();
+            EditorUtility.SetDirty(spline);
+        }
 
+    }
     private void DrawSelectedPointInspector() {
         GUILayout.Label("Selected Point");
         EditorGUI.BeginChangeCheck();
