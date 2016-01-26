@@ -16,6 +16,7 @@ namespace TrainWreck.GamePlay
 
     public class Train : MonoBehaviour
     {
+        public bool lookForward;
         BezierSpline trackPath;
         public float duration = 0f;
         [SerializeField]
@@ -41,9 +42,13 @@ namespace TrainWreck.GamePlay
         {
             progress += Time.deltaTime/duration;
             if (progress >= 1f) {
-                progress = 1f;
+                progress -= 1f;
             }
-            transform.localPosition = trackPath.GetPoint(progress);
+            Vector3 position = trackPath.GetPoint(progress);
+            transform.localPosition = position;
+            if (lookForward) {
+                transform.LookAt(position + trackPath.GetDirection(progress));
+            }
         }
 
         public void JumpTrack(TrackType track) {
