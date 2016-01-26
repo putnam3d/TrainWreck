@@ -16,11 +16,20 @@ namespace TrainWreck.GamePlay
 
     public class Train : MonoBehaviour
     {
+        BezierSpline trackPath;
+        public float duration = 0f;
+        [SerializeField]
+        private float progress = 0f;
         public const int MaxHealth = 100;
         public int health = MaxHealth;
         public Vector3 pos;
         TrackType cTrackType = TrackType.MIDDLE;
         TrainShift cTrainShift = TrainShift.LEVELED;
+
+        void Awake() {
+            trackPath = (BezierSpline)GameObject.FindGameObjectWithTag("TrackPath").GetComponent<BezierSpline>();    
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -30,7 +39,11 @@ namespace TrainWreck.GamePlay
         // Update is called once per frame
         void Update()
         {
-
+            progress += Time.deltaTime/duration;
+            if (progress >= 1f) {
+                progress = 1f;
+            }
+            transform.localPosition = trackPath.GetPoint(progress);
         }
 
         public void JumpTrack(TrackType track) {
