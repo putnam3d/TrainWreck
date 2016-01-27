@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Level : MonoBehaviour {
 
+    float progress = 0f;
+    bool bFinished = false;
+
     public void Start(){ 
     
     }
@@ -17,6 +20,12 @@ public class Level : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
+        CheckForFinish();
 	}
+
+    void CheckForFinish() {
+        if (bFinished) { 
+            //Run Win State
+        }
+    }
 }
